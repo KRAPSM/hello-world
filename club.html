@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>club</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        let membernum = 5;
+        let leadernamenum = 1;
+        document.addEventListener('DOMContentLoaded', function() {
+            window.onscroll = () => {
+                document.querySelector('.sidebar').style.top = window.scrollY+"px";
+                document.querySelector('#cancel').style.top = window.scrollY+10+"px";
+                document.querySelector('#btn').style.top = window.scrollY+25+"px";
+            }
+            document.querySelector('form').onsubmit=() => {
+                if (document.querySelector('textarea').value === '') {
+                    alert("Please fill out all the blanks");
+                    return false;
+                }
+                else if (document.querySelector('input[name="email1"]').value === '' || document.querySelector('input[name="email2"]').value === '') {
+                    alert("Please fill out all the blanks");
+                    return false;
+                }
+                else if (document.querySelector('input[name="leadername"]').value === '' || document.querySelector('input[name="chaperonename"]').value === '') {
+                    alert("Please fill out all the blanks");
+                    return false;
+                }
+                else {
+                    for (var i=1; i<=membernum+2; i++) {
+                        var name = "name" + i;
+                        console.log(name);
+                        if (document.querySelector('input[name='+ name + ']') !== null) {
+                            if(document.querySelector('input[name='+ name +']').value === '') {
+                                alert("Please fill out all the blanks");
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        document.addEventListener('click', event => {
+            const element = event.target;
+            if (element.id === "delete") {
+                const remove = element.parentElement;
+                remove.remove();
+            }
+            else if (element.id === "add") {
+                add();
+            }
+            else if (element.id === "add1") {
+                add1();
+            }
+        })
+        function add() {
+            membernum++;
+            const inbox = document.createElement('div');
+            const name = "name" + (membernum+2);
+            inbox.className = 'clubname';
+            inbox.innerHTML = `
+                <input type="text" class="form-control" style="width: 300px; display:inline;" name="${name}" placeholder="name">
+                <select class="option" id="cars">
+                    <option value="9th">9th</option>
+                    <option value="10th">10th</option>
+                    <option value="11th">11th</option>
+                    <option value="12th">12th</option>
+                </select>
+                <button class="btn" type="button" id="delete" value="Delete"><i class="fa fa-times w3-large"></i> Cancel</button>
+            `;
+            document.querySelector('#members').append(inbox);
+        }
+        function add1() {
+            leadernamenum++;
+            const inbox = document.createElement('div');
+            const leadername = "leadername" + (leadernamenum);
+            const leaderemail = "leaderemail" + (leadernamenum);
+            inbox.innerHTML = `
+              <input type="text" class="form-control" style="margin-bottom: 18px; margin-right:12px; width: 300px; display: inline;" name="${leadername}" placeholder="name">
+              <input type="text" class="form-control" style="margin-bottom: 18px; width: 400px; display: inline;" name="${leaderemail}" placeholder="email address">
+              <button class="btn" type="button" id="delete" style="margin-bottom: 18px;"><i class="fa fa-times w3-large"></i> Cancel</button>
+            `;
+            document.querySelector('#leaders').append(inbox);
+        }
+
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  </head>
+  <body>
+    <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+      <a href="index.html">
+        <header>Club Activities</header>
+      </a>
+      <ul>
+        <li><a href="art.html"><i class="fas fa-palette"></i>Art Honors Club</a></li>
+        <li><a href="dance.html"><i class="fa fa-music"></i>Dance Club</a></li>
+        <li><a href="engineering.html"><i class="fa fa-cogs"></i>Engineering Club</a></li>
+        <li><a href="gisc.html"><i class="fas fa-hand-holding-heart"></i>GISC</a></li>
+        <li><a href="injaz.html"><i class="fas fa-dollar-sign"></i>INJAZ</a></li>
+        <li><a href="math.html"><i class="fa fa-calculator"></i>Math</a></li>
+        <li><a href="mun.html"><i class="far fa-envelope"></i>MUN</a></li>
+        <li><a href="nhs.html"><i class="fa fa-graduation-cap"></i>NHS</a></li>
+        <li><a href="papyrus.html"><i class="far fa-edit"></i>Papyrus</a></li>
+        <li><a href="robotics.html"><i class="fas fa-robot"></i>Robotics</a></li>
+        <li><a href="stuco.html"><i class="fa fa-child"></i>StuCo</a></li>
+        <li><a href="wsc.html"><i class="fa fa-music fa-fw"></i>WSC</a></li>
+        <li><a href="club.html"><i class="fa fa-plus-circle"></i>Make a new club</a></li>
+      </ul>
+    </div>
+    <div class="text">
+      <h2>Make a new club</h2>
+      <p>Please fill out the form below. If you have any questions, please email us at 23epark@cacegypt.org.</p>
+      <p>Your club should have at least five members (including leaders), one chaperone, and one leader.</p>
+      <p>Once you submit the form, we will send you an email. In two weeks, your club will be uploaded on this website.</p>
+      <p class="required">* Required</p>
+      <br><br>
+
+      <form>
+        <label for="name">Write your name and email address <span class="required">*</span></label>
+        <div class="clubname">
+          <input type="text" class="form-control" name="name1" placeholder="name">
+        </div>
+        <div class="clubname">
+          <input type="text" class="form-control" name="email1" placeholder="email address">
+        </div>
+        <br>
+
+        <label for="name">Write a name of your club <span class="required">*</span></label>
+        <div class="clubname">
+          <input type="text" class="form-control" name="name2" placeholder="name">
+        </div>
+        <br>
+
+        <label for="member">Write the members of your club (minimum 5 people) <span class="required">*</span></label><br>
+        <div id="members">
+          <div class="clubname">
+            <input type="text" class="form-control" style="width: 300px; display:inline;" name="name3" placeholder="name">
+            <select class="option" id="cars">
+              <option value="9th">9th</option>
+              <option value="10th">10th</option>
+              <option value="11th">11th</option>
+              <option value="12th">12th</option>
+            </select>
+          </div>
+
+          <div class="clubname">
+            <input type="text" class="form-control" style="width: 300px; display:inline;" name="name4" placeholder="name">
+            <select class="option" id="cars">
+              <option value="9th">9th</option>
+              <option value="10th">10th</option>
+              <option value="11th">11th</option>
+              <option value="12th">12th</option>
+            </select>
+          </div>
+
+          <div class="clubname">
+            <input type="text" class="form-control" style="width: 300px; display:inline;" name="name5" placeholder="name">
+            <select class="option" id="cars">
+              <option value="9th">9th</option>
+              <option value="10th">10th</option>
+              <option value="11th">11th</option>
+              <option value="12th">12th</option>
+            </select>
+          </div>
+
+          <div class="clubname">
+            <input type="text" class="form-control" style="width: 300px; display:inline;" name="name6" placeholder="name">
+            <select class="option" id="cars">
+              <option value="9th">9th</option>
+              <option value="10th">10th</option>
+              <option value="11th">11th</option>
+              <option value="12th">12th</option>
+            </select>
+          </div>
+
+          <div class="clubname">
+            <input type="text" class="form-control" style="width: 300px; display:inline;" name="name7" placeholder="name">
+            <select class="option" id="cars">
+              <option value="9th">9th</option>
+              <option value="10th">10th</option>
+              <option value="11th">11th</option>
+              <option value="12th">12th</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn" type="button" id="add">+ Add</button>
+
+        <br><br>
+
+        <label for="name">Write the name and email address of the leader(s) of your club <span class="required">*</span></label>
+        <div id="leaders">
+          <div>
+            <input type="text" class="form-control" style="margin-bottom: 18px; margin-right:12px; width: 300px; display: inline;" name="leadername1" placeholder="name">
+            <input type="text" class="form-control" style="margin-bottom: 18px; width: 400px; display: inline;" name="leaderemail1" placeholder="email address">
+          </div>
+        </div>
+        <button class="btn" type="button" id="add1">+ Add</button>
+        <br><br>
+
+
+        <label for="name">Choose the name of the chaperone of your club <span class="required">*</span></label>
+        <br>
+        <select class="option1" id="cars">
+          <option class="teacher">Ameer Ahmed</option>
+          <option class="teacher">Jenniece Anderson</option>
+          <option class="teacher">Jonathan Bryans</option>
+          <option class="teacher">Jean Clauzet</option>
+          <option class="teacher">Linda Duggan</option>
+          <option class="teacher">Erik Dunham</option>
+          <option class="teacher">Emad El Shabrawy</option>
+          <option class="teacher">Heba Farouk</option>
+          <option class="teacher">Ashley Gramolini</option>
+          <option class="teacher">Anthony Knox</option>
+          <option class="teacher">Dorothy Knox</option>
+          <option class="teacher">Jeff Lindstrom</option>
+          <option class="teacher">Ian McCuaig</option>
+          <option class="teacher">Kira Morgan</option>
+          <option class="teacher">James Morris</option>
+          <option class="teacher">Lee Paul</option>
+          <option class="teacher">Antonio Pedrett</option>
+          <option class="teacher">Betty Pietak</option>
+          <option class="teacher">Anthony Rawlings</option>
+          <option class="teacher">Pascale Rozier</option>
+          <option class="teacher">Rebecca Riddle</option>
+          <option class="teacher">Maya Williamson</option>
+          <option class="teacher">Benjamin Alan Yeo</option>
+        </select>
+        <br><br>
+
+        <label for="name">Write the description of your club (ex. purpose, meeting date, etc) <span class="required">*</span></label>
+        <div class="form-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="9" name="description"></textarea>
+        </div>
+        <br>
+
+        <input type="submit" style="margin-bottom: 30px; padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;">
+      </form>
+    </div>
+    <!--<div class=footer>
+      Copyright (c) 2020 Cairo American College. All rights reserved.
+    </div>-->
+  </body>
+</html>

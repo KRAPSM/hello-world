@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.background {
+  width: 100%;
+  height: 100%;
+}
+.sidebar {
+  position: absolute;
+  top:0px;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: #a01d20;
+  transition: all .5s ease;
+  overflow: auto;
+}
+.sidebar header {
+  font-size: 20px;
+  color: white;
+  line-height: 70px;
+  text-align: center;
+  background: #8B0000;
+  user-select: none;
+}
+.sidebar ul a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 18px;
+  color: white;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  transition: .4s;
+
+}
+ul li:hover a{
+  padding-left: 50px;
+}
+.sidebar ul a i{
+  margin-right: 16px;
+}
+#check{
+  display: none;
+}
+label #btn, label #cancel{
+  position: absolute;
+  background: #8B0000;
+  border: 1px solid white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+label #btn{
+  left: 40px;
+  top: 25px;
+  font-size: 35px;
+  color: white;
+  padding: 6px 12px;
+  transition: all .5s;
+}
+label #cancel{
+  z-index: 1111;
+  left: -210px;
+  top: 10px;
+  font-size: 25px;
+  color: white;
+  padding: 4px 9px;
+  transition: all .5s ease;
+}
+#check:checked ~ .sidebar{
+  left: 0;
+}
+#check:checked ~ label #btn{
+  left: 260px;
+  opacity: 0;
+  pointer-events: none;
+}
+#check:checked ~ label #cancel{
+  left: 210px;
+}
+#check:checked ~ section{
+  margin-left: 250px;
+}
+section{
+  background: url(background.jpeg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  transition: all .5s;
+}
+h1{
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  font-size: 90px;
+  font-style: italic;
+  text-decoration: underline;
+}
+h2{
+  margin-bottom: 15px;
+}
+header{
+  font-size: 30px;
+}
+.text{
+  position: absolute;
+  top:100px;
+  left:350px;
+}
+.btn-group{
+  position: relative;
+}
+.required{
+  color: #8B0000;
+  font-size: 12px;
+  font-style: italic;
+}
+select {
+    width: 100px;
+    height: 38px;
+    margin: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+select:focus {
+    text-align: center;
+}
+.clubname {
+    margin-bottom: 18px;
+}
+#add, #add1 {
+  background-color: #8B0000;
+  color: white;
+}
+#delete:hover {
+  color: #8B0000
+}
+.leaders {
+  margin-bottom: 18px;
+}
+.option1{
+  width: 200px;
+}
+.footer{
+  margin: 0px;
+  padding-top: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  height: 100px;
+  background-color: #8B0000;
+  color: white;
+  margin-top: 1600px;
+  margin-bottom: 10px;
+}
+.carousel-inner {
+  height: 400px;
+  width: 900px;
+  margin-bottom: 50px;
+}
+.carousel-item {
+  max-width: 100%;
+  max-height: 100%;
+}
+.carousel{
+    margin-top: 20px;
+}
+.fa-instagram {
+  background: white;
+  font-size: 20px;
+  color: #E1306C;
+}
+
+.fab:hover {
+    opacity: 0.5;
+    color: #E1306C;
+}
+.card-body {
+  width: 850px;
+}
+.card {
+  border-radius: 0px;
+}
+ul i {
+  width: 20px;
+}
